@@ -1,6 +1,3 @@
-# fe_coding_test1
-프론트엔드 통합 질문 입력 폼 코딩테스트 문제입니다.
-
 ### <통합 질문 입력 폼 컴포넌트 구현>
 ![예제 이미지](https://drive.google.com/uc?export=view&id=1OgdRszBQ6S2lpn1yLHfReDdcbcLqNQbm)
 
