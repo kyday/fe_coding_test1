@@ -1,8 +1,8 @@
 # fe_coding_test1
 프론트엔드 통합 질문 입력 폼 코딩테스트 문제입니다.
 
-
-
+### <통합 질문 입력 폼 컴포넌트 구현>
+![예제 이미지](https://drive.google.com/uc?export=view&id=1OgdRszBQ6S2lpn1yLHfReDdcbcLqNQbm)
 
 ## 안내 사항
 
@@ -31,8 +31,10 @@
     - 체크박스
     
     클릭 시 답변 유형을 선택하는 Dropdown을 나타냅니다.
-  
-![예제 이미지](https://file.notion.so/f/f/8e753188-7cd7-46fc-8b52-ea945ccabeaf/ccea834a-361e-4a15-ad90-c8503b7095b1/Untitled.png?id=16d1db1a-495a-4c45-99aa-88af70cc50e3&table=block&spaceId=8e753188-7cd7-46fc-8b52-ea945ccabeaf&expirationTimestamp=1714780800000&signature=VkXirMKEqWgeTi38M9d8GW3k_cO4vMPtdloFC3AGWVY&downloadName=Untitled.png)
+
+![이미지 설명](https://drive.google.com/uc?export=view&id=1X7JNJ-Apx9ptrHbxsVgwAPMM1Wxc9Jm2)
+
+
     
 - **답변 영역** : 답변 유형에 따라 답변 컴포넌트를 변경합니다.
 - **필수 여부 체크박스** : 사용자가 질문을 필수 응답으로 설정할 수 있습니다.
