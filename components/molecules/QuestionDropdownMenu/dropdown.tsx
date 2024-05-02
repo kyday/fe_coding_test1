@@ -18,7 +18,12 @@ import { DropdownMenuCheckboxItemProps } from "@radix-ui/react-dropdown-menu";
 import React from "react";
 import { useFormStore } from "@/store/form/useFormStore";
 
-export function QuestionDropdownMenu() {
+type QuestionDropdownMenuType = {
+  menus: Array<{ id: number; value: string }>;
+};
+
+export function QuestionDropdownMenu(props: QuestionDropdownMenuType) {
+  const { menus } = props;
   const dropdownValue = useFormStore((state) => state.dropdownValue);
   const onChangeDropDown = useFormStore((state) => state.onChangeDropDown);
 
@@ -33,15 +38,13 @@ export function QuestionDropdownMenu() {
           value={dropdownValue}
           onValueChange={onChangeDropDown}
         >
-          <DropdownMenuRadioItem value="답문형 답변">
-            답문형 답변
-          </DropdownMenuRadioItem>
-          <DropdownMenuRadioItem value="객관식 답변">
-            객관식 답변
-          </DropdownMenuRadioItem>
-          <DropdownMenuRadioItem value="체크박스">
-            체크박스
-          </DropdownMenuRadioItem>
+          {menus?.map((item) => {
+            return (
+              <DropdownMenuRadioItem key={item.id} value={item.value}>
+                {item.value}
+              </DropdownMenuRadioItem>
+            );
+          })}
         </DropdownMenuRadioGroup>
       </DropdownMenuContent>
     </DropdownMenu>

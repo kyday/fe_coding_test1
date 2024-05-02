@@ -6,9 +6,11 @@ type useFormStoreType = {
   onChangeDropDown: (value: string) => void;
 };
 
-export const useFormStore = create<useFormStoreType>((set) => ({
+export const useFormStore = create<useFormStoreType>((set, get) => ({
   input: "",
   dropdownValue: "답문형 답변",
+  componentElement: [],
+
   onChangeDropDown: (value: string) => {
     set({ dropdownValue: value });
   },

@@ -19,29 +19,48 @@ import {
 import { QuestionDropdownMenu } from "@/components/molecules/QuestionDropdownMenu/dropdown";
 import { useFormStore } from "@/store/form/useFormStore";
 import React from "react";
-import { OriginalComponent } from "@/components/molecules/OriginalComponent";
+import { OriginalComponent } from "@/components/molecules/originalComponent";
+import { ComponentController } from "@/controller/componentController";
 
 export function QuestionCard() {
   const dropdownValue = useFormStore((state) => state.dropdownValue);
 
   const [components, setComponents] = useState([
-    <div key="original" className="flex">
-      <input type="radio" id="" name="" value="" />
-      <Input maxLength={50} />
-      <div>x</div>
-    </div>,
+    <OriginalComponent key={"origin"} />,
   ]);
 
   const addComponent = () => {
-    const newComponent = <OriginalComponent key={`original-${Date.now()}`} />;
-    setComponents([...components, newComponent]);
+    const newComponent = ComponentController(components)
+      .add(<OriginalComponent />)
+      .get();
+
+    setComponents(
+      newComponent.map((component, index) => {
+        return React.cloneElement(component, { key: `component-${index}` });
+      })
+    );
   };
 
   return (
     <Card className="w-[800px] h-1/3 p-4">
       <section className="flex gap-[12px]">
         <Input maxLength={50} />
-        <QuestionDropdownMenu />
+        <QuestionDropdownMenu
+          menus={[
+            {
+              id: 0,
+              value: "답문형 답변",
+            },
+            {
+              id: 1,
+              value: "객관식 답변",
+            },
+            {
+              id: 2,
+              value: "체크박스",
+            },
+          ]}
+        />
       </section>
 
       {dropdownValue === "답문형 답변" && <Input maxLength={50} />}
@@ -54,11 +73,11 @@ export function QuestionCard() {
         </>
       )}
       {dropdownValue === "체크박스" && (
-        <div key="original" className="flex">
-          <input type="checkbox" id="" name="" value="" />
-          <Input maxLength={50} />
-          <div>x</div>
-        </div>
+        <>
+          {components.map((component, index) => (
+            <div key={component.key}>{component}</div>
+          ))}
+        </>
       )}
 
       {dropdownValue !== "답문형 답변" && (
